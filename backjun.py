@@ -19,6 +19,9 @@
 #     print('==')
 
 
+
+
+
 # 문제
 # 연도가 주어졌을 때, 윤년이면 1, 아니면 0을 출력하는 프로그램을 작성하시오.
 
@@ -43,6 +46,10 @@
 # else :
 #     print('0')
 
+
+
+
+
 # 문제
 # N을 입력받은 뒤, 구구단 N단을 출력하는 프로그램을 작성하시오. 출력 형식에 맞춰서 출력하면 된다.
 
@@ -56,3 +63,13 @@
 
 # for i in range(1,10):
 #     print(N,"*",i,"=",N*i)
+
+
+n = int(input())
+sum = 0
+count = 0
+
+while count < n:
+    count+=1
+    sum = sum + count
+print(sum)
