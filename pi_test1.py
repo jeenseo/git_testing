@@ -1,27 +1,23 @@
-from time import sleep
 from machine import Pin
-#create LED object from pin2,Set Pin2 to output
-led1=Pin(5,Pin.OUT)
-led2=Pin(9,Pin.OUT)
+import time
+
+led=Pin( 3 ,Pin.OUT)
+button_pin = Pin( 7 , Pin.IN, Pin.PULL_UP)
 
 
-
+bt = 0
 while True:
+# Check if the button is pressed (LOW)
+    if (button_pin.value() == 0 and bt == 0):
+        print("Button Pressed!")
+        # Debounce delay to prevent multiple readings
+        led.value(1) # LED 동작
+        time.sleep(0.5)
+        bt = 1
 
-    n= input()
-    if n == '1':
-        print('RED LED ON')
-        led1.value(1)
-        led2.value(0)
-    elif n == '2':
-        print('BLUE LED ON')
-        led1.value(0)
-        led2.value(1)
-    elif n == '3':
-        print('ALL LED ON')
-        led1.value(1)
-        led2.value(1)
-    elif n == '4':
-        print('ALL LED OFF')
-        led1.value(0)
-        led2.value(0)
+    elif (button_pin.value() == 0 and bt == 1):
+        print("Button OFF!")
+        led.value(0)
+        time.sleep(0.5)
+        bt = 0
+    time.sleep(0.01)  
